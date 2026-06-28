@@ -1,0 +1,43 @@
+[
+  {
+    "name": "CHECK_TYPE",
+    "repair": true
+  },
+  {
+    "name": "CHECK_REQUIRED",
+    "args": [
+      "id",
+      "name",
+      "phone",
+      "email"
+    ],
+    "repair": false
+  },
+  {
+    "name": "NORMALIZE",
+    "repair": true
+  },
+  {
+    "name": "GRADE_MAPPER",
+    "repair": true
+  },
+  {
+    "name": "DEDUPLICATE",
+    "repair": false
+  },
+  {
+    "name": "CHECKSUM",
+    "repair": true
+  },
+  {
+    "name": "SORT",
+    "args": [
+      {"attr": "grades_avg", "dir": "desc"},
+      {"attr": "name_length", "dir": "asc"}
+    ]
+  },
+  {
+    "name": "EXPORT_JSON",
+    "student_id": "s35774"
+  }
+]

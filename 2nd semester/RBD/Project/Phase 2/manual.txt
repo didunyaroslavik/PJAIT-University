@@ -1,0 +1,19 @@
+Files:
+1. Project_Phase2_Setup.sql
+This file creates all tables used in the database and inserts sample data into them.
+
+2. Project_Phase2_Queries.sql
+This file contains all required DQL and DML instructions:
+- SELECT with JOIN and WHERE
+- SELECT with aggregate functions and GROUP BY / HAVING
+- SELECT with standard subquery
+- SELECT with correlated subquery
+- UPDATE with correlated subquery
+- DELETE with subquery
+
+Database description:
+The database models the structure of a Netflix-like video streaming platform. It includes subscription plans, user accounts, profiles, devices, avatars, movies, series, episodes, genres, actors, and movie reactions.
+
+Additional note:
+The UPDATE statement (Query 5.1) uses a correlated subquery to increase the release year of any series that contains at least one episode longer than 55 minutes. In the provided sample data, this affects the series 'Breaking Bad', which has an episode of 58 minutes.
+The DELETE statement (Query 6.1) removes all movie reactions linked to movies released before the year 2000. In the provided sample data, this affects the reaction for 'Fight Club', released in 1999.

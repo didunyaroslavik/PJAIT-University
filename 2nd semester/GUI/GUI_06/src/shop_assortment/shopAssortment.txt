@@ -1,0 +1,12 @@
+Mary shoes 1000
+John beer 5
+Mary stockings 70
+John beer 6
+Mary lipstick 40
+John hammer 25
+John beer 4
+Mary shoes 1200
+James butter 9
+John beer 7
+Mary shoes 2250
+John beer 7

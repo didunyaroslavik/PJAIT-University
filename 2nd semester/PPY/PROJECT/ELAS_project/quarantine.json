@@ -1,0 +1,1704 @@
+{
+    "CHECK_REQUIRED: Missing or invalid field 'name'": [
+        {
+            "name": "None",
+            "id": "IDX-635227",
+            "address": "Lake Michelle,David Orchard,76719",
+            "grades": "BAD,WORSE,4.5",
+            "phone": "44397990",
+            "email": "ericrodriguez@pojet.edu.pl"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-626513",
+            "address": "West Bryan,Mendez Roads,14416",
+            "grades": "2.0380,4.51203,4.53191,5.02716,4.51848",
+            "phone": "788-365-2439",
+            "email": "MCDANIELJULIE@POJET.EDU.PL"
+        },
+        {
+            "name": "None",
+            "id": "IDX-588609",
+            "address": "West Nicholas,Davis Circles,79105",
+            "grades": "3.5 , \t4.0 ,-4.5,4.5@,+3.5",
+            "phone": "+\u0e51 \u0e53\u0e50\u0e53-\u0e55\u0e52\u0e52-\u0e55\u0e51\u0e57\u0e51",
+            "email": "wGbUdS@MIT.eDU"
+        },
+        {
+            "name": "None",
+            "id": "IDX-907313",
+            "address": "Sarahland,Bell Crest,42876",
+            "grades": "4.5 , \t4.0 ,3.0&,4.5&,3.0@",
+            "phone": "+1 306-337-4678",
+            "email": "uBAwci@Cam.AC.UK"
+        },
+        {
+            "name": "None",
+            "id": "IDX-895596",
+            "address": "Millermouth,Austin Hills,84751",
+            "grades": "4.5 ,+3.5,3.0",
+            "phone": "\u0e52\u0e51\u0e57\u0e56\u0e54\u0e54\u0e58\u0e54\u0e51\u0e55",
+            "email": "rumTPM@caM.Ac.uk"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-324287",
+            "address": "Gonzalezport,Janet Ramp,61851",
+            "grades": "4.0 ,-2.0,4.0?,3.0&",
+            "phone": "+\u0e51 \u0e51\u0e55\u0e58-\u0e58\u0e50\u0e57-\u0e54\u0e59\u0e56\u0e52",
+            "email": "ZWABoL@yAHoO.COM"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-171073",
+            "address": "Lake Andrew,Brooks Crossing,64320",
+            "grades": "+5.0, \t3.0 ,+3.0,-2.0,2.0?,-4.5",
+            "phone": "643-415-5797",
+            "email": "GkMvRn@cam.Ac.uk"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-042068",
+            "address": "Lisachester,Patel Motorway,25304",
+            "grades": "NaN1,NaN2,4.0?, \t3.0 , \t5.0 ,+3.5",
+            "phone": "189-683-2745",
+            "email": "uNpDol@pojet.Edu.pL"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-545841",
+            "address": "Jonathanbury,Moreno Loaf,25765",
+            "grades": "4.0, \t4.5 , \t3.5",
+            "phone": "+\u0e51 \u0e57\u0e58\u0e56-\u0e53\u0e53\u0e54-\u0e55\u0e57\u0e54\u0e56",
+            "email": "eoRkLI@STanFoRd.eDu"
+        },
+        {
+            "name": "None",
+            "id": "IDX-799260",
+            "address": "West Johnny,Barnett Harbors,42799",
+            "grades": "NaN1,NaN2,4.5",
+            "phone": "186-380-4468",
+            "email": "ijCIdM@yAHoo.com"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-214571",
+            "address": "North Jamesstad,William Spurs,01489",
+            "grades": "3.5?,2.0&,-4.0, \t5.0 , \t3.0 , \t5.0",
+            "phone": "+12329146383",
+            "email": "rKdpMG@cam.Ac.Uk"
+        },
+        {
+            "name": "None",
+            "id": "IDX-544278",
+            "address": "Lake Brandonburgh,Phillips Ports,95311",
+            "grades": "+2.0,4.0@,-2.0,4.5?,5.0?",
+            "phone": "+\u0e51 \u0e52\u0e51\u0e55-\u0e51\u0e57\u0e53-\u0e57\u0e55\u0e59\u0e54",
+            "email": "TUNbjq@pOjET.EdU.PL"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-859085",
+            "address": "Williamsside,Olson Walks,81402",
+            "grades": "2.0 ,+3.0,2.0?",
+            "phone": "+\u0e51 \u0e56\u0e50\u0e53-\u0e56\u0e57\u0e55-\u0e55\u0e56\u0e55\u0e54",
+            "email": "hlwLuv@StaNford.EdU"
+        },
+        {
+            "name": "None",
+            "id": "IDX-020237",
+            "address": "Bryantside,Alexander Radial,36182",
+            "grades": "5.0,-2.0,5.0&",
+            "phone": "+\u0e51 \u0e58\u0e58\u0e56-\u0e58\u0e55\u0e51-\u0e52\u0e54\u0e52\u0e53",
+            "email": "iHwCFP@pJatk.EDU.PL"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-412782",
+            "address": "Ginastad,Little Parkways,33941",
+            "grades": "3.5 ,NaN_REPAIR, \t4.0",
+            "phone": "\u0e57\u0e57\u0e52-\u0e54\u0e50\u0e54-\u0e54\u0e53\u0e55\u0e51",
+            "email": "RuQKSO@PjATk.eDu.pl"
+        },
+        {
+            "name": "None",
+            "id": "IDX-507417",
+            "address": "Pricefurt,Ross Light,57851",
+            "grades": "3.5?,+3.5,4.5",
+            "phone": "643-403-8762",
+            "email": "qDNrjA@STanFOrd.Edu"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-458548",
+            "address": "New William,Rhonda Walk,20246",
+            "grades": "3.0,3.5",
+            "phone": "487-553-7167",
+            "email": "UDXZch@YAhOO.COM"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-173217",
+            "address": "Lake Nicole,Potts Street,09703",
+            "grades": "5.0 ,2.0@,-3.5,3.0?,3.5",
+            "phone": "+1 105-389-7096",
+            "email": "nyRskc@NYU.Edu"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-170763",
+            "address": "Lake Brooke,Denise Road,07679",
+            "grades": "+4.0,-2.0,-4.0",
+            "phone": "668-894-5771",
+            "email": "bPVKEb@yaHoO.Com"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-177373",
+            "address": "West Allisonside,Ethan Mission,25091",
+            "grades": "3.0",
+            "phone": "334-932-9825",
+            "email": "gfdmHq@staNford.eDU"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-755771",
+            "address": "West Alexistown,Rosales Center,84143",
+            "grades": "4.0?, \t4.0 , \t3.0",
+            "phone": "657-164-1132",
+            "email": "aCqtXR@CAm.AC.UK"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-734916",
+            "address": "East Jenniferstad,Le Spring,89689",
+            "grades": "+3.5,4.5?,4.0&, \t4.5 ,4.0@",
+            "phone": "\u0e59\u0e56\u0e53-\u0e53\u0e57\u0e57-\u0e56\u0e52\u0e59\u0e54",
+            "email": "NxqmKC@PjaTK.eDu.Pl"
+        },
+        {
+            "name": "None",
+            "id": "IDX-622551",
+            "address": "Johnstad,David Burg,49622",
+            "grades": "4.0 ,4.5",
+            "phone": "\u0e55\u0e58\u0e59-\u0e54\u0e57\u0e54-\u0e58\u0e55\u0e50\u0e55",
+            "email": "eIQcQj@PoJet.EdU.Pl"
+        },
+        {
+            "name": "None",
+            "id": "IDX-369653",
+            "address": "Hurstport,Melissa Harbors,06821",
+            "grades": "3.5 ,5.0&,+3.5, \t3.5 ,4.5?",
+            "phone": "+1 255-325-4554",
+            "email": "AaCjTt@YAHOO.com"
+        },
+        {
+            "name": "None",
+            "id": "IDX-807853",
+            "address": "Lake Kevinchester,Johnson Canyon,16711",
+            "grades": "3.5 ,+5.0,-4.0, \t4.5",
+            "phone": "+1 372-979-3835",
+            "email": "ZArtpT@yaHoO.COm"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-268424",
+            "address": "Port Erichaven,Michael Ways,09716",
+            "grades": "+3.5, \t4.0 ,+4.0,-3.0",
+            "phone": "274-434-2536",
+            "email": "OLvDAM@yahOo.cOm"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-079883",
+            "address": "West Adrianchester,Moore Groves,65876",
+            "grades": "2.0 , \t4.5 , \t5.0 ,+2.0,4.0?",
+            "phone": "784-691-8423",
+            "email": "VCtEGH@pOJeT.edu.pl"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-480927",
+            "address": "West Courtney,Sharon Extensions,96825",
+            "grades": "+3.0, \t2.0 ,4.0@",
+            "phone": "950-988-5646",
+            "email": "otIxPP@pjatK.EdU.PL"
+        },
+        {
+            "name": "None",
+            "id": "IDX-055481",
+            "address": "East Carolyn,Barry Lodge,95932",
+            "grades": "3.0@, \t4.0 , \t3.5 ,-2.0",
+            "phone": "824-502-4199",
+            "email": "pAnRmv@MIt.edU"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-904472",
+            "address": "New Jerry,Hernandez Ferry,71482",
+            "grades": "2.0,+4.5, \t2.0 ,+4.5, \t4.5",
+            "phone": "948-727-8268",
+            "email": "oOJbdA@cAm.ac.uk"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-157166",
+            "address": "South Katieborough,Graham Mews,48055",
+            "grades": "3.5, \t3.0 , \t4.0 , \t3.5 , \t3.5 ,+3.5",
+            "phone": "672-385-6183",
+            "email": "wussbk@YaHoo.coM"
+        }
+    ],
+    "CHECKSUM: Failed checksum even after repair": [
+        {
+            "name": "Donna Pham-Murphy",
+            "id": "IDX-345111",
+            "address": "East Carlos,Sarah Hills,19297",
+            "grades": [
+                5.0,
+                3.0,
+                4.0,
+                4.0,
+                3.5
+            ],
+            "phone": "750-320-7066",
+            "email": "efwapk@stanford.edu"
+        },
+        {
+            "name": "Louis Miller",
+            "id": "IDX-251746",
+            "address": "Megantown,Payne Hill,03752",
+            "grades": [
+                4.5,
+                5.0,
+                5.0,
+                3.5
+            ],
+            "phone": "+17957045399",
+            "email": "eoyokn@mit.edu"
+        },
+        {
+            "name": "Elizabeth Townsend",
+            "id": "IDX-571196",
+            "address": "Port Jose,Stephanie Street,42946",
+            "grades": [
+                5.0,
+                2.0,
+                3.5,
+                3.5
+            ],
+            "phone": "746-699-5937",
+            "email": "zufbza@nyu.edu"
+        },
+        {
+            "name": "Angela Cook",
+            "id": "IDX-629927",
+            "address": "West Kevin,Fisher Views,49002",
+            "grades": [
+                4.0,
+                2.0,
+                2.0,
+                5.0,
+                5.0,
+                3.0
+            ],
+            "phone": "867-514-8553",
+            "email": "kjtohb@pjatk.edu.pl"
+        },
+        {
+            "name": "Tonya Carr",
+            "id": "IDX-520646",
+            "address": "North Louis,Hutchinson Loaf,99044",
+            "grades": [
+                4.0,
+                4.0,
+                5.0,
+                4.0
+            ],
+            "phone": "(+1) 919-312-9743",
+            "email": "hgqcnm@cam.ac.uk"
+        },
+        {
+            "name": "Alexandria Stevens",
+            "id": "IDX-013544",
+            "address": "Port Johnborough,Andrea Corner,92850",
+            "grades": [
+                3.5,
+                3.0,
+                4.5,
+                4.5,
+                3.5
+            ],
+            "phone": "928-278-2907",
+            "email": "rkwsnl@cam.ac.uk"
+        },
+        {
+            "name": "Bradley Miles-Graves",
+            "id": "IDX-242536",
+            "address": "Zacharyhaven,Watkins Ville,06343",
+            "grades": [
+                3.5,
+                4.0,
+                3.0
+            ],
+            "phone": "312-947-9348",
+            "email": "gyhhyg@pojet.edu.pl"
+        },
+        {
+            "name": "Christopher Black",
+            "id": "IDX-459319",
+            "address": "Davisshire,Ortiz Tunnel,02505",
+            "grades": [
+                2.0,
+                4.5,
+                4.5,
+                3.5,
+                3.5
+            ],
+            "phone": "(+1) 254-313-2729",
+            "email": "xlnplb@yahoo.com"
+        },
+        {
+            "name": "Rebecca Hoover",
+            "id": "IDX-521030",
+            "address": "Port Bradleyfurt,Michelle Fords,90262",
+            "grades": [
+                3.0,
+                3.0,
+                5.0,
+                2.0,
+                4.0
+            ],
+            "phone": "809-619-1795",
+            "email": "rcagzm@stanford.edu"
+        },
+        {
+            "name": "Adam Miller",
+            "id": "IDX-026138",
+            "address": "New Monique,Allen Meadow,86795",
+            "grades": [
+                2.0,
+                2.0,
+                4.5,
+                4.5,
+                2.0
+            ],
+            "phone": "+\u0e51\u0e51\u0e55\u0e53\u0e54\u0e57\u0e56\u0e56\u0e50\u0e52\u0e59",
+            "email": "qrwukj@pjatk.edu.pl"
+        },
+        {
+            "name": "Kenneth Cole",
+            "id": "IDX-070794",
+            "address": "Samanthaside,Blake Crossroad,85608",
+            "grades": [
+                4.5,
+                4.0,
+                4.5,
+                3.5
+            ],
+            "phone": "(+1) 487-966-6388",
+            "email": "urpbxq@nyu.edu"
+        },
+        {
+            "name": "Jennifer Boyd",
+            "id": "IDX-859207",
+            "address": "Lake Shawn,Lawson Hills,98145",
+            "grades": [
+                1.0,
+                2.0,
+                4.0,
+                5.0
+            ],
+            "phone": "+17724382312",
+            "email": "mdagni@nyu.edu"
+        },
+        {
+            "name": "Jody Smith-Ferguson",
+            "id": "IDX-357289",
+            "address": "New Davidfort,Andre Summit,51579",
+            "grades": [
+                4.0,
+                4.5,
+                3.0,
+                2.0
+            ],
+            "phone": "(+1) 607-979-9921",
+            "email": "gsdcan@nyu.edu"
+        },
+        {
+            "name": "Peter Schmidt",
+            "id": "IDX-565439",
+            "address": "Bassville,Dixon Heights,02128",
+            "grades": [
+                3.0,
+                4.5,
+                4.5,
+                4.0
+            ],
+            "phone": "+17467398319",
+            "email": "tarfac@mit.edu"
+        },
+        {
+            "name": "Christine Padilla-Malone",
+            "id": "IDX-758537",
+            "address": "East Stephen,Berry Manor,41536",
+            "grades": [
+                2.0,
+                3.0,
+                4.0
+            ],
+            "phone": "(+1) 486-937-3486",
+            "email": "zoeywd@pojet.edu.pl"
+        },
+        {
+            "name": "Jack Dougherty",
+            "id": "IDX-154308",
+            "address": "Blakechester,Crystal Extensions,61631",
+            "grades": [
+                3.0,
+                5.0,
+                4.0
+            ],
+            "phone": "4897059244",
+            "email": "iyacol@pjatk.edu.pl"
+        },
+        {
+            "name": "Joshua Combs",
+            "id": "IDX-764657",
+            "address": "North Williambury,Thomas Locks,35350",
+            "grades": [
+                3.0,
+                4.5,
+                5.0,
+                3.0,
+                4.5,
+                5.0
+            ],
+            "phone": "998-883-5038",
+            "email": "fmsfqt@pojet.edu.pl"
+        },
+        {
+            "name": "Laurie Donaldson",
+            "id": "IDX-711201",
+            "address": "East Jamesstad,Franklin Junctions,87364",
+            "grades": [
+                4.5,
+                5.0,
+                4.0
+            ],
+            "phone": "(+1) 110-696-2164",
+            "email": "qteovv@stanford.edu"
+        },
+        {
+            "name": "Brandon Gray",
+            "id": "IDX-786373",
+            "address": "Patrickburgh,David Circle,48567",
+            "grades": [
+                2.0,
+                5.0,
+                3.0
+            ],
+            "phone": "(+1) 657-112-1636",
+            "email": "seofko@mit.edu"
+        },
+        {
+            "name": "Nicole Brown-Robinson",
+            "id": "IDX-882347",
+            "address": "East Randyton,Simon Trafficway,15167",
+            "grades": [
+                2.0,
+                5.0,
+                4.0,
+                4.5
+            ],
+            "phone": "(+1) 885-666-4058",
+            "email": "aklezm@nyu.edu"
+        },
+        {
+            "name": "Aaron Ferrell",
+            "id": "IDX-687215",
+            "address": "Port Stephenfurt,Faulkner Shoals,72545",
+            "grades": [
+                5.0,
+                4.0,
+                3.5,
+                5.0,
+                2.0
+            ],
+            "phone": "225-819-8584",
+            "email": "blibth@pjatk.edu.pl"
+        },
+        {
+            "name": "Robert Mills",
+            "id": "IDX-574344",
+            "address": "North Karen,Walker Way,51276",
+            "grades": [
+                3.0,
+                2.0,
+                4.5,
+                5.0
+            ],
+            "phone": "(+1) 926-934-9322",
+            "email": "kqbwcb@pjatk.edu.pl"
+        },
+        {
+            "name": "Kiara Valenzuela",
+            "id": "IDX-202809",
+            "address": "Wolfhaven,Blanchard Manor,28708",
+            "grades": [
+                4.5,
+                2.0,
+                5.0,
+                3.5
+            ],
+            "phone": "(+1) 783-778-8356",
+            "email": "wpzupd@cam.ac.uk"
+        },
+        {
+            "name": "Stephen Pearson",
+            "id": "IDX-192700",
+            "address": "South Crystalport,Smith Junctions,02405",
+            "grades": [
+                5.0,
+                2.0,
+                5.0,
+                3.5,
+                2.0,
+                5.0
+            ],
+            "phone": "+\u0e51\u0e59\u0e52\u0e51\u0e52\u0e51\u0e59\u0e51\u0e59\u0e52\u0e50",
+            "email": "wadjix@yahoo.com"
+        },
+        {
+            "name": "Jennifer Lopez",
+            "id": "IDX-742069",
+            "address": "Georgeburgh,Selena Hill,91166",
+            "grades": [
+                4.0,
+                3.5,
+                4.5,
+                4.0
+            ],
+            "phone": "584-174-4904",
+            "email": "thcjbu@yahoo.com"
+        },
+        {
+            "name": "Derek Compton",
+            "id": "IDX-628381",
+            "address": "Floresfurt,Jonathan Streets,76273",
+            "grades": [
+                3.0,
+                3.0,
+                5.0,
+                4.0,
+                4.0
+            ],
+            "phone": "(+1) 837-402-2133",
+            "email": "rfmvmd@pojet.edu.pl"
+        },
+        {
+            "name": "Jennifer Gutierrez",
+            "id": "IDX-031357",
+            "address": "Jonathanstad,Jessica Cliffs,18185",
+            "grades": [
+                4.0,
+                3.5,
+                5.0,
+                4.0
+            ],
+            "phone": "(+1) 498-321-7058",
+            "email": "fnfqop@yahoo.com"
+        },
+        {
+            "name": "Stephen Burke",
+            "id": "IDX-901254",
+            "address": "New Isaiahchester,Hull Pass,55338",
+            "grades": [
+                5.0,
+                4.5
+            ],
+            "phone": "(+1) 106-859-6548",
+            "email": "qgddlg@yahoo.com"
+        },
+        {
+            "name": "Shawn Moore",
+            "id": "IDX-624733",
+            "address": "Hernandezfurt,Amanda Rapids,13130",
+            "grades": [
+                4.0,
+                3.0,
+                5.0,
+                4.0,
+                5.0
+            ],
+            "phone": "(+1) 857-107-5835",
+            "email": "ahatgo@pjatk.edu.pl"
+        },
+        {
+            "name": "Tiffany Clark",
+            "id": "IDX-795088",
+            "address": "West Jennifer,Smith Bypass,29840",
+            "grades": [
+                4.5,
+                4.5,
+                3.0,
+                4.5
+            ],
+            "phone": "342-701-7680",
+            "email": "lpaizo@mit.edu"
+        },
+        {
+            "name": "Sierra Johnson",
+            "id": "IDX-695935",
+            "address": "Beckberg,Julia Brook,83310",
+            "grades": [
+                3.5,
+                3.0,
+                4.5,
+                3.0,
+                5.0
+            ],
+            "phone": "279-932-9997",
+            "email": "mkmtlx@nyu.edu"
+        },
+        {
+            "name": "Mike Campbell",
+            "id": "IDX-704635",
+            "address": "Justinbury,Scott Village,43597",
+            "grades": [
+                3.0,
+                4.0,
+                3.0,
+                4.0
+            ],
+            "phone": "990-622-7686",
+            "email": "qcuiev@cam.ac.uk"
+        }
+    ],
+    "CHECK_TYPE: Email still invalid after repair": [
+        {
+            "name": "John SmItH",
+            "id": "IDX-986276",
+            "address": "Port Tammyborough,Daniel Estates,52759",
+            "grades": "2.0,+3.0,-3.5",
+            "phone": "4661526776",
+            "email": "hdnhis@pjatk.edu.pl@@"
+        },
+        {
+            "name": "miCHeLLE LEE",
+            "id": "IDX-939671",
+            "address": "New Jessicaland,Holly Islands,90036",
+            "grades": "3.5 , \t5.0 , \t4.5 ,5.0&,-2.0",
+            "phone": "8768047247",
+            "email": "qmhpnx@yahoo.com@@"
+        },
+        {
+            "name": "holLy saNdERs-CLaRKe",
+            "id": "IDX-416091",
+            "address": "Lisabury,Amy Roads,82559",
+            "grades": "5.0",
+            "phone": "769-202-4973",
+            "email": "ccsqvf@mit.edu@@"
+        },
+        {
+            "name": "kAyLA DoYlE",
+            "id": "IDX-226420",
+            "address": "Brownchester,Jeanette Overpass,29961",
+            "grades": "4.0 , \t4.0 ,+2.0, \t4.0 , \t3.0",
+            "phone": "+\u0e51 \u0e56\u0e59\u0e55-\u0e57\u0e57\u0e54-\u0e57\u0e51\u0e51\u0e53",
+            "email": "zhjebi@cam.ac.uk@@"
+        },
+        {
+            "name": "rIcHard BlAckWell",
+            "id": "IDX-260742",
+            "address": "Mcgeeborough,Charles Freeway,93557",
+            "grades": "+3.0, \t3.0 ,4.0?, \t4.5",
+            "phone": "+1 981-912-9141",
+            "email": "dckout@stanford.edu@@"
+        },
+        {
+            "name": "HeAtheR grAVeS",
+            "id": "IDX-827969",
+            "address": "Lake Cynthiamouth,Watson Island,28447",
+            "grades": "3.5,5.0&,+4.0,+3.0, \t2.0",
+            "phone": "+\u0e51 \u0e55\u0e59\u0e52-\u0e52\u0e52\u0e57-\u0e51\u0e50\u0e51\u0e52",
+            "email": "wrhgkb@stanford.edu@@"
+        },
+        {
+            "name": "ERIc jOnES-SmIth",
+            "id": "IDX-778461",
+            "address": "North Jamesfort,Kyle Walk,41110",
+            "grades": "2.0 ,+4.5,+3.5,2.0?,-5.0,-2.0",
+            "phone": "842-748-6426",
+            "email": "hjbzsa@pjatk.edu.pl@@"
+        },
+        {
+            "name": "andrew robINson",
+            "id": "IDX-296117",
+            "address": "Lake Gary,Johnson Lights,43016",
+            "grades": "3.5,3.0",
+            "phone": "+\u0e51 \u0e54\u0e54\u0e58-\u0e56\u0e52\u0e53-\u0e56\u0e53\u0e52\u0e57",
+            "email": "jookhg@pojet.edu.pl@@"
+        },
+        {
+            "name": "JOSHUa wiLLiams-LucErO",
+            "id": "IDX-390630",
+            "address": "South Jakeview,Trujillo Passage,46030",
+            "grades": "2.0 ,+3.5,3.0&,+4.5,+3.5",
+            "phone": "+1 850-355-8164",
+            "email": "crfrox@pjatk.edu.pl@@"
+        },
+        {
+            "name": "LawRence GReEN",
+            "id": "IDX-287252",
+            "address": "Hendersonmouth,Gutierrez Roads,84443",
+            "grades": "2.0,+2.0,+5.0,+4.0",
+            "phone": "483-420-5897",
+            "email": "upcjdf@stanford.edu@@"
+        },
+        {
+            "name": "PatriCIa walKER",
+            "id": "IDX-607438",
+            "address": "North Thomasville,Montgomery Cliffs,53684",
+            "grades": "4.0 ,-3.0, \t4.0 ,4.0?",
+            "phone": "+1 699-729-7642",
+            "email": "nfmxav@mit.edu@@"
+        },
+        {
+            "name": "TrEVor COOpER",
+            "id": "IDX-641052",
+            "address": "Markside,Mary Valleys,02203",
+            "grades": "4.5@,+4.5, \t4.0 ,4.5?,-3.5,5.0&",
+            "phone": "131-475-3163",
+            "email": "gbuxyb@pjatk.edu.pl@@"
+        },
+        {
+            "name": "anTHony YoUNg",
+            "id": "IDX-012420",
+            "address": "Amandahaven,Beverly Locks,27202",
+            "grades": "4.5&, \t4.0 , \t2.0 ,+2.0,2.0?",
+            "phone": "602-435-9315",
+            "email": "ufsifn@mit.edu@@"
+        },
+        {
+            "name": "THoMaS yoUNG",
+            "id": "IDX-221178",
+            "address": "Hutchinsonchester,David Circles,79490",
+            "grades": "3.5&,-3.0,-3.5,+2.0, \t5.0 , \t2.0",
+            "phone": "477-186-1159",
+            "email": "kbnzgw@pojet.edu.pl@@"
+        },
+        {
+            "name": "tIfFaNY BROwN",
+            "id": "IDX-245847",
+            "address": "North Thomas,Margaret Fork,97761",
+            "grades": "4.5 ,4.0&,-3.0, \t2.0 ,-3.0",
+            "phone": "473-542-4255",
+            "email": "bdrhkn@pjatk.edu.pl@@"
+        },
+        {
+            "name": "EmmA DUnlap",
+            "id": "IDX-712129",
+            "address": "Lake Zacharyland,Mary Spurs,86511",
+            "grades": "4.0@,-2.0,-4.5,4.5?,4.5",
+            "phone": "+\u0e51 \u0e57\u0e53\u0e55-\u0e53\u0e51\u0e51-\u0e54\u0e56\u0e55\u0e58",
+            "email": "fyuhnj@pjatk.edu.pl@@"
+        },
+        {
+            "name": "LAUreN vega",
+            "id": "IDX-290971",
+            "address": "New Natalie,Thomas Plaza,49699",
+            "grades": "+4.0,+2.0,-3.5, \t3.5 ,4.5?, \t4.0",
+            "phone": "828-400-3726",
+            "email": "jnydda@mit.edu@@"
+        },
+        {
+            "name": "jUlie jameS",
+            "id": "IDX-141908",
+            "address": "Sheltonland,Thomas Union,03398",
+            "grades": "+3.0,+5.0,4.0",
+            "phone": "274-375-6652",
+            "email": "okpjmb@cam.ac.uk@@"
+        },
+        {
+            "name": "naThaNIEL HEnDRIcKs",
+            "id": "IDX-149575",
+            "address": "New Amberfort,Lopez Stravenue,69816",
+            "grades": "NaN1,NaN2,+4.5",
+            "phone": "+1 644-903-9485",
+            "email": "odurbb@pjatk.edu.pl@@"
+        },
+        {
+            "name": "MaTtHEw joHNSoN",
+            "id": "IDX-418899",
+            "address": "Stoutton,Donna Ranch,64781",
+            "grades": "3.0@,3.5",
+            "phone": "400-295-5642",
+            "email": "mrerap@cam.ac.uk@@"
+        },
+        {
+            "name": "None",
+            "id": "IDX-162721",
+            "address": "Mileschester,Conway Islands,45482",
+            "grades": "+3.5,+4.0,-5.0,+2.0",
+            "phone": "423-937-5142",
+            "email": "yrcqgp@pjatk.edu.pl@@"
+        },
+        {
+            "name": "JEssICA garcia",
+            "id": "IDX-715811",
+            "address": "South Thomas,James Club,75526",
+            "grades": "4.5 , \t3.5 ,2.0@",
+            "phone": "326-681-2760",
+            "email": "gtwuwj@yahoo.com@@"
+        },
+        {
+            "name": "katHRyN MOliNA",
+            "id": "IDX-988252",
+            "address": "North Melissahaven,Hale Rue,85841",
+            "grades": "+3.0, \t4.0 ,+5.0,3.0?,-3.0,+2.0",
+            "phone": "+1 548-375-8637",
+            "email": "vfcnjq@pojet.edu.pl@@"
+        },
+        {
+            "name": "sarA Aguilar-rIvERa",
+            "id": "IDX-680319",
+            "address": "Leeborough,Gary Shores,61734",
+            "grades": "4.5@,3.0",
+            "phone": "709-447-9178",
+            "email": "vajubw@nyu.edu@@"
+        },
+        {
+            "name": "lESLIe HumphRey",
+            "id": "IDX-745946",
+            "address": "Lake Meredith,Jay River,19031",
+            "grades": "4.0, \t2.0 ,-5.0",
+            "phone": "+1 412-131-4962",
+            "email": "pwikpr@pojet.edu.pl@@"
+        },
+        {
+            "name": "kaTHleEN HubBArD",
+            "id": "IDX-983475",
+            "address": "Johnsonstad,John Wells,88362",
+            "grades": "4.0?,5.0?,-3.0",
+            "phone": "404-815-9673",
+            "email": "qyckas@stanford.edu@@"
+        },
+        {
+            "name": "NO DATA",
+            "id": "IDX-403701",
+            "address": "West Nicole,Wendy Common,29165",
+            "grades": "2.0?,4.0&, \t3.0 , \t3.5",
+            "phone": "\u0e51\u0e57\u0e52-\u0e51\u0e58\u0e59-\u0e57\u0e54\u0e54\u0e50",
+            "email": "rxnhmt@nyu.edu@@"
+        },
+        {
+            "name": "dENisE jOHNSON-mooRE",
+            "id": "IDX-450871",
+            "address": "South Danielfurt,Steven Square,54024",
+            "grades": "4.5",
+            "phone": "\u0e56\u0e53\u0e56-\u0e59\u0e55\u0e59-\u0e58\u0e55\u0e51\u0e51",
+            "email": "dnbxyn@yahoo.com@@"
+        },
+        {
+            "name": "NAN",
+            "id": "IDX-145391",
+            "address": "West Ashleyville,Rodriguez Stream,45303",
+            "grades": "5.0@, \t4.0 ,4.5?, \t4.5 ,-3.0,+2.0",
+            "phone": "\u0e57\u0e55\u0e59-\u0e59\u0e51\u0e57-\u0e53\u0e55\u0e50\u0e56",
+            "email": "yheqoc@nyu.edu@@"
+        },
+        {
+            "name": "RHoNdA avilA",
+            "id": "IDX-234119",
+            "address": "South Terriland,Williams Summit,21648",
+            "grades": "5.0 , \t3.5 ,2.0@,4.5&",
+            "phone": "\u0e57\u0e54\u0e56-\u0e56\u0e54\u0e50-\u0e56\u0e59\u0e50\u0e54",
+            "email": "lczwxl@yahoo.com@@"
+        },
+        {
+            "name": "None",
+            "id": "IDX-947513",
+            "address": "West Charlesshire,Foster Fields,11557",
+            "grades": "3.5,-5.0,+2.0,4.0?,+4.5",
+            "phone": "+\u0e51 \u0e59\u0e56\u0e53-\u0e52\u0e59\u0e56-\u0e54\u0e59\u0e54\u0e51",
+            "email": "cybiyv@pojet.edu.pl@@"
+        },
+        {
+            "name": "EMily blaKe",
+            "id": "IDX-092702",
+            "address": "Weissshire,Justin Roads,95513",
+            "grades": "+4.5, \t2.0 ,-4.0,+3.0,-4.0",
+            "phone": "665-256-2153",
+            "email": "eqfhfv@stanford.edu@@"
+        },
+        {
+            "name": "nicholaS gOmez",
+            "id": "IDX-305617",
+            "address": "Jessicatown,Daniels Fields,13806",
+            "grades": "3.0",
+            "phone": "+1 204-281-5844",
+            "email": "tfsjxl@yahoo.com@@"
+        },
+        {
+            "name": "JoannA GONzAleZ",
+            "id": "IDX-911955",
+            "address": "Andersontown,Crystal Flats,04726",
+            "grades": "4.5@,4.5&,3.0",
+            "phone": "+1 540-273-5680",
+            "email": "fpisko@yahoo.com@@"
+        },
+        {
+            "name": "GReGOrY LEE",
+            "id": "IDX-649503",
+            "address": "Woodhaven,Perez Extension,33072",
+            "grades": "3.5&,-2.0,-5.0",
+            "phone": "648-746-8587",
+            "email": "kjcmmt@nyu.edu@@"
+        },
+        {
+            "name": "DOnnA becK-Smith",
+            "id": "IDX-910447",
+            "address": "North Oscar,James Corner,06552",
+            "grades": "4.0?, \t4.5 , \t3.5 , \t4.5",
+            "phone": "+17728415094",
+            "email": "rgyipx@stanford.edu@@"
+        },
+        {
+            "name": "Samantha DaVIdSON",
+            "id": "IDX-649503",
+            "address": "North Dylan,Watkins Street,33870",
+            "grades": "3.0 ,-2.0,5.0@,3.5@,+5.0",
+            "phone": "+1 201-463-1535",
+            "email": "goqhmf@cam.ac.uk@@"
+        },
+        {
+            "name": "HeAThER jOrdaN",
+            "id": "IDX-822677",
+            "address": "Lauraton,William Brook,59723",
+            "grades": "4.0,-5.0,+3.5, \t5.0 ,4.0?",
+            "phone": "199-828-9851",
+            "email": "smlvsp@stanford.edu@@"
+        },
+        {
+            "name": "None",
+            "id": "IDX-617118",
+            "address": "North Monique,Gamble Corner,02341",
+            "grades": "4.0 ,+5.0,2.0?, \t4.5",
+            "phone": "+1 776-737-9364",
+            "email": "nxmxrx@pojet.edu.pl@@"
+        },
+        {
+            "name": "GwENdolyN kiNG",
+            "id": "IDX-546096",
+            "address": "Jamesfort,Jessica Brooks,87077",
+            "grades": "+5.0, \t3.0 , \t5.0",
+            "phone": "370-280-8302",
+            "email": "lgkvdo@yahoo.com@@"
+        },
+        {
+            "name": "BRiAN hAmiltOn-TrUJILlo",
+            "id": "IDX-803522",
+            "address": "Jamesberg,Carter Parkway,72801",
+            "grades": "5.0&, \t3.0 ,+3.0,+3.0,-4.5",
+            "phone": "\u0e54\u0e52\u0e59-\u0e59\u0e54\u0e53-\u0e51\u0e58\u0e54\u0e58",
+            "email": "fxskvi@nyu.edu@@"
+        },
+        {
+            "name": "SaBrinA lINdSEy",
+            "id": "IDX-256164",
+            "address": "Lake Barbara,Tran Mill,91147",
+            "grades": "3.5 , \t5.0 ,+5.0,4.0@,2.0@",
+            "phone": "400-293-7055",
+            "email": "qszvnk@mit.edu@@"
+        },
+        {
+            "name": "MELIsSa BakER-SinGH",
+            "id": "IDX-811692",
+            "address": "Thomasstad,Proctor Meadow,95528",
+            "grades": "3.5 ,-5.0,-5.0",
+            "phone": "\u0e53\u0e57\u0e50-\u0e55\u0e57\u0e50-\u0e57\u0e55\u0e53\u0e53",
+            "email": "zrxwxj@pojet.edu.pl@@"
+        },
+        {
+            "name": "wEnDY CAMpBEll",
+            "id": "IDX-579957",
+            "address": "Parkview,Schmidt Shores,07316",
+            "grades": "2.0",
+            "phone": "\u0e53\u0e57\u0e59-\u0e52\u0e51\u0e58-\u0e52\u0e56\u0e55\u0e51",
+            "email": "ossupn@cam.ac.uk@@"
+        },
+        {
+            "name": "MIChaeL nolan-hODGes",
+            "id": "IDX-736596",
+            "address": "Nelsonfurt,Hernandez Corner,73362",
+            "grades": "4.5 ,+4.5,+3.0,4.0&, \t3.0 ,3.0@",
+            "phone": "+1 116-116-7530",
+            "email": "eesunv@mit.edu@@"
+        },
+        {
+            "name": "VaLeRiE bRadFOrd",
+            "id": "IDX-904596",
+            "address": "Russellside,Michael Pines,60904",
+            "grades": "NaN_REPAIR,3.5&, \t5.0",
+            "phone": "676-426-7475",
+            "email": "unarlp@yahoo.com@@"
+        },
+        {
+            "name": "JosEph cain",
+            "id": "IDX-092673",
+            "address": "Andersonhaven,John Flats,93526",
+            "grades": "NaN1,NaN2,+3.5,2.0",
+            "phone": "+12925583589",
+            "email": "tjqvdo@cam.ac.uk@@"
+        },
+        {
+            "name": "MarIe dAviES",
+            "id": "IDX-820893",
+            "address": "Port Angelachester,Julie Roads,09977",
+            "grades": "3.5 ,4.5@,-4.0",
+            "phone": "535-317-1548",
+            "email": "wtcdmi@mit.edu@@"
+        },
+        {
+            "name": "DaniellE wHIte",
+            "id": "IDX-031198",
+            "address": "South Christineberg,Harris Ports,14306",
+            "grades": "NaN1,NaN2,3.0",
+            "phone": "339-518-9848",
+            "email": "ooefpd@mit.edu@@"
+        },
+        {
+            "name": "DANIeL ROY-HIggiNS",
+            "id": "IDX-510424",
+            "address": "Thomaschester,Castillo Spur,43672",
+            "grades": "3.0 , \t3.5 ,-3.0, \t4.0",
+            "phone": "812-181-2182",
+            "email": "vppgyr@cam.ac.uk@@"
+        },
+        {
+            "name": "lISa eVans-TReVINo",
+            "id": "IDX-444920",
+            "address": "Perryhaven,William Heights,71892",
+            "grades": "3.0 ,4.0?, \t3.5 ,4.0?, \t4.0 ,-3.5",
+            "phone": "+\u0e51 \u0e51\u0e53\u0e52-\u0e58\u0e59\u0e58-\u0e58\u0e51\u0e58\u0e58",
+            "email": "boaspt@nyu.edu@@"
+        },
+        {
+            "name": "jasON MckAY",
+            "id": "IDX-339204",
+            "address": "South Staceyborough,Hall Unions,59428",
+            "grades": "2.0@, \t4.0 ,+3.5",
+            "phone": "+1 415-244-3806",
+            "email": "xcdrkd@cam.ac.uk@@"
+        },
+        {
+            "name": "COrey bRAdy",
+            "id": "IDX-268919",
+            "address": "Maryfort,Young Garden,41832",
+            "grades": "4.0 ,+5.0, \t4.5 ,-4.5,4.5?,-4.0",
+            "phone": "454-132-3796",
+            "email": "gkhgaz@stanford.edu@@"
+        },
+        {
+            "name": "eLIzAbetH hARtman",
+            "id": "IDX-033261",
+            "address": "Sharonshire,Martin Courts,91054",
+            "grades": "NaN1,NaN2,4.0",
+            "phone": "691-633-4238",
+            "email": "tbmeoh@pjatk.edu.pl@@"
+        }
+    ],
+    "DEDUPLICATE: Duplicate Name found": [
+        {
+            "name": "Ryan Warren",
+            "id": "IDX-238166",
+            "address": "South Stephanieville,Karla Passage,81466",
+            "grades": [
+                4.5,
+                2.0,
+                3.5
+            ],
+            "phone": "3343827656",
+            "email": "rablmc@pjatk.edu.pl"
+        },
+        {
+            "name": "Michelle Lee",
+            "id": "IDX-453974",
+            "address": "Port Robin,Leonard Fields,72456",
+            "grades": [
+                4.0
+            ],
+            "phone": "378-522-3666",
+            "email": "trprob@cam.ac.uk"
+        },
+        {
+            "name": "Amanda Wright",
+            "id": "IDX-018640",
+            "address": "Yuville,Bartlett Creek,85254",
+            "grades": [
+                3.0,
+                4.0,
+                5.0,
+                4.5
+            ],
+            "phone": "205-902-4545",
+            "email": "pryuid@nyu.edu"
+        },
+        {
+            "name": "Amanda Wright",
+            "id": "IDX-675367",
+            "address": "Emilyville,Lewis Junctions,73650",
+            "grades": [
+                3.5,
+                3.5,
+                4.0,
+                2.0,
+                5.0
+            ],
+            "phone": "(+1) 259-864-7797",
+            "email": "rdkqpo@cam.ac.uk"
+        },
+        {
+            "name": "Brenda Pace",
+            "id": "IDX-730796",
+            "address": "Saramouth,Cox Union,13928",
+            "grades": [
+                5.0,
+                4.5,
+                4.0,
+                3.5,
+                4.0
+            ],
+            "phone": "(+1) 506-339-6576",
+            "email": "tvjdxy@mit.edu"
+        },
+        {
+            "name": "Nicole Williams",
+            "id": "IDX-551924",
+            "address": "Ericaview,Hendrix View,87982",
+            "grades": [
+                3.0,
+                2.0,
+                2.0,
+                3.0
+            ],
+            "phone": "482-344-1145",
+            "email": "tizcbq@yahoo.com"
+        },
+        {
+            "name": "Joshua Brown",
+            "id": "IDX-599322",
+            "address": "West Heathermouth,Stephanie Harbor,78862",
+            "grades": [
+                4.0,
+                2.0,
+                5.0,
+                4.0,
+                3.0
+            ],
+            "phone": "242-637-7548",
+            "email": "ddrrut@pjatk.edu.pl"
+        },
+        {
+            "name": "Cassandra Bradley",
+            "id": "IDX-960447",
+            "address": "South Rachael,David Stravenue,61884",
+            "grades": [
+                3.0,
+                5.0,
+                3.0,
+                4.0
+            ],
+            "phone": "6048676153",
+            "email": "alkcbo@cam.ac.uk"
+        },
+        {
+            "name": "Nicole Myers-Gardner",
+            "id": "IDX-956710",
+            "address": "Shepherdland,Daniel Mission,17351",
+            "grades": [
+                3.5,
+                4.5,
+                3.5,
+                3.0,
+                4.0
+            ],
+            "phone": "+17053045330",
+            "email": "xrghlj@pjatk.edu.pl"
+        },
+        {
+            "name": "Gloria Reed",
+            "id": "IDX-699323",
+            "address": "Hansonburgh,Richardson Light,54359",
+            "grades": [
+                3.0,
+                4.0,
+                4.5,
+                3.8
+            ],
+            "phone": "(+1) 530-392-9085",
+            "email": "byatnm@nyu.edu"
+        },
+        {
+            "name": "Barbara Donaldson-Anderson",
+            "id": "IDX-597668",
+            "address": "Lindaburgh,Schroeder Mews,10690",
+            "grades": [
+                2.8,
+                2.0,
+                3.5
+            ],
+            "phone": "845-390-1948",
+            "email": "sovmcz@mit.edu"
+        },
+        {
+            "name": "Renee Rogers",
+            "id": "IDX-991199",
+            "address": "Lorimouth,Cunningham Court,90027",
+            "grades": [
+                4.5,
+                4.5,
+                2.0,
+                3.0,
+                3.5
+            ],
+            "phone": "(+1) 602-881-5429",
+            "email": "sgcaob@pojet.edu.pl"
+        },
+        {
+            "name": "Melissa Jimenez",
+            "id": "IDX-276173",
+            "address": "Port Melissaton,Kelly Ville,26339",
+            "grades": [
+                4.5,
+                4.0
+            ],
+            "phone": "294-630-5790",
+            "email": "hvzifr@pojet.edu.pl"
+        },
+        {
+            "name": "David Lopez",
+            "id": "IDX-398936",
+            "address": "West Paul,Adams Square,33726",
+            "grades": [
+                3.5,
+                3.5,
+                3.0,
+                3.5,
+                5.0
+            ],
+            "phone": "118-328-8880",
+            "email": "smxfcx@stanford.edu"
+        },
+        {
+            "name": "Joshua Brown",
+            "id": "IDX-656831",
+            "address": "Ethanmouth,Hatfield Passage,20351",
+            "grades": [
+                3.0,
+                4.5,
+                4.5,
+                5.0
+            ],
+            "phone": "598-605-7406",
+            "email": "rlbkux@cam.ac.uk"
+        },
+        {
+            "name": "Cindy Martinez-Walsh",
+            "id": "IDX-804095",
+            "address": "Riceshire,Perez Plains,40380",
+            "grades": [
+                3.5,
+                3.0,
+                2.0,
+                5.0,
+                2.0
+            ],
+            "phone": "507-948-4519",
+            "email": "ykzhqi@yahoo.com"
+        },
+        {
+            "name": "Melanie Clark",
+            "id": "IDX-936563",
+            "address": "Dawnbury,John Corners,59373",
+            "grades": [
+                4.0,
+                2.0,
+                3.0,
+                4.0
+            ],
+            "phone": "345-823-5522",
+            "email": "vjfrsh@stanford.edu"
+        },
+        {
+            "name": "Hunter Munoz",
+            "id": "IDX-277998",
+            "address": "Kellyside,Smith Estates,19485",
+            "grades": [
+                5.0,
+                3.5,
+                3.0
+            ],
+            "phone": "3061157944",
+            "email": "ypetvz@pojet.edu.pl"
+        },
+        {
+            "name": "Hunter Munoz",
+            "id": "IDX-968456",
+            "address": "Brianburgh,Frederick Corners,18724",
+            "grades": [
+                4.0,
+                5.0,
+                4.5,
+                4.5
+            ],
+            "phone": "933-415-2246",
+            "email": "fmrpod@stanford.edu"
+        },
+        {
+            "name": "Erica Gould",
+            "id": "IDX-224860",
+            "address": "South Rodneyside,Nathan Ranch,99297",
+            "grades": [
+                2.0,
+                5.0,
+                4.5
+            ],
+            "phone": "310-286-9765",
+            "email": "fhitkv@yahoo.com"
+        },
+        {
+            "name": "David Lopez",
+            "id": "IDX-243336",
+            "address": "Holderburgh,Ricky Estate,46896",
+            "grades": [
+                4.5,
+                4.0,
+                4.5
+            ],
+            "phone": "184-234-4473",
+            "email": "fxfgjt@pojet.edu.pl"
+        },
+        {
+            "name": "Scott Lane",
+            "id": "IDX-865109",
+            "address": "South Margaretton,Morgan Course,27125",
+            "grades": [
+                4.0,
+                2.0
+            ],
+            "phone": "330-110-5090",
+            "email": "aborni@pojet.edu.pl"
+        },
+        {
+            "name": "Samuel Maldonado",
+            "id": "IDX-826095",
+            "address": "Pattersonside,Wagner View,29868",
+            "grades": [
+                2.0,
+                3.5,
+                3.5,
+                4.0,
+                2.0,
+                2.0
+            ],
+            "phone": "(+1) 882-894-7291",
+            "email": "mvolzo@nyu.edu"
+        },
+        {
+            "name": "Cynthia Rivera",
+            "id": "IDX-272686",
+            "address": "North Kenneth,Moore Village,41433",
+            "grades": [
+                3.0,
+                3.0,
+                3.5
+            ],
+            "phone": "+15003916676",
+            "email": "qogcdh@mit.edu"
+        },
+        {
+            "name": "Jesse Tanner",
+            "id": "IDX-040751",
+            "address": "West Brittney,Cohen Parkway,59138",
+            "grades": [
+                5.0,
+                4.5,
+                2.0,
+                3.0,
+                3.0,
+                3.0
+            ],
+            "phone": "303-687-2946",
+            "email": "nrbzhb@cam.ac.uk"
+        },
+        {
+            "name": "Andrew Ramos",
+            "id": "IDX-591922",
+            "address": "Lake Kyle,Jessica Garden,88491",
+            "grades": [
+                3.5,
+                3.5,
+                4.0,
+                4.5
+            ],
+            "phone": "(+1) 794-492-4960",
+            "email": "vcfwdj@pojet.edu.pl"
+        }
+    ],
+    "DEDUPLICATE: Duplicate ID found": [
+        {
+            "name": "Lisa Mooney",
+            "id": "IDX-073474",
+            "address": "Mckenzieberg,Andrew Islands,09196",
+            "grades": [
+                4.0,
+                3.0,
+                4.5
+            ],
+            "phone": "(+1) 536-438-3337",
+            "email": "ggknct@cam.ac.uk"
+        },
+        {
+            "name": "Rebecca West-Bruce",
+            "id": "IDX-919271",
+            "address": "East Andreahaven,Dawn Crossroad,54099",
+            "grades": [
+                1.0,
+                2.0,
+                5.0,
+                4.0,
+                2.0
+            ],
+            "phone": "961-413-5699",
+            "email": "othspx@yahoo.com"
+        },
+        {
+            "name": "Angela Burke-Martin",
+            "id": "IDX-892126",
+            "address": "Kimberlyton,Dean Shore,78561",
+            "grades": [
+                3.0,
+                5.0,
+                4.0,
+                3.5,
+                4.5
+            ],
+            "phone": "895-293-1623",
+            "email": "vxache@mit.edu"
+        },
+        {
+            "name": "Sara Wilson",
+            "id": "IDX-108223",
+            "address": "Carlstad,Derek Summit,35191",
+            "grades": [
+                4.5,
+                4.5,
+                4.5,
+                2.0
+            ],
+            "phone": "120-505-3613",
+            "email": "ravfgk@pojet.edu.pl"
+        },
+        {
+            "name": "Robert Fry",
+            "id": "IDX-171102",
+            "address": "South Stephanie,Marshall Parks,01927",
+            "grades": [
+                4.0,
+                2.0,
+                3.5
+            ],
+            "phone": "550-985-4274",
+            "email": "vrxylz@cam.ac.uk"
+        },
+        {
+            "name": "William Hart",
+            "id": "IDX-082646",
+            "address": "Port Josephbury,Leah Green,31243",
+            "grades": [
+                5.0,
+                3.0,
+                5.0
+            ],
+            "phone": "+\u0e51\u0e54\u0e54\u0e57\u0e57\u0e53\u0e56\u0e54\u0e51\u0e56\u0e59",
+            "email": "azfvxq@mit.edu"
+        },
+        {
+            "name": "Peter Walton",
+            "id": "IDX-452684",
+            "address": "South Jim,Hernandez Bridge,55314",
+            "grades": [
+                4.5,
+                4.5,
+                3.0,
+                3.0
+            ],
+            "phone": "(+1) 795-923-3502",
+            "email": "rnzovu@yahoo.com"
+        },
+        {
+            "name": "Tommy Jordan",
+            "id": "IDX-585320",
+            "address": "Jonesport,Frazier Shoals,92933",
+            "grades": [
+                4.5,
+                4.5,
+                4.5
+            ],
+            "phone": "(+1) 898-370-5196",
+            "email": "wjdlbt@pojet.edu.pl"
+        },
+        {
+            "name": "Christina House",
+            "id": "IDX-116323",
+            "address": "West Danielberg,Joseph Roads,02128",
+            "grades": [
+                5.0,
+                3.0,
+                5.0,
+                5.0,
+                3.5
+            ],
+            "phone": "482-718-9113",
+            "email": "catfzp@mit.edu"
+        },
+        {
+            "name": "Kelly Cardenas",
+            "id": "IDX-436548",
+            "address": "Port Joshua,Melinda Trace,25871",
+            "grades": [
+                2.0,
+                5.0,
+                2.0,
+                5.0
+            ],
+            "phone": "(+1) 329-835-2499",
+            "email": "njjgci@pojet.edu.pl"
+        },
+        {
+            "name": "Kimberly Mclean",
+            "id": "IDX-547524",
+            "address": "Johnberg,David Crescent,61391",
+            "grades": [
+                3.5,
+                5.0,
+                5.0,
+                2.0,
+                5.0,
+                3.0
+            ],
+            "phone": "(+1) 929-359-9400",
+            "email": "boqunm@mit.edu"
+        },
+        {
+            "name": "Alice Watkins",
+            "id": "IDX-995022",
+            "address": "Port Christopherburgh,David Walks,73833",
+            "grades": [
+                2.0,
+                3.0
+            ],
+            "phone": "510-206-8535",
+            "email": "zsdyty@cam.ac.uk"
+        },
+        {
+            "name": "Michael Greene-Aguirre",
+            "id": "IDX-171073",
+            "address": "Port Tamiborough,Paul Spring,31591",
+            "grades": [
+                4.0,
+                4.5
+            ],
+            "phone": "(+1) 670-292-9370",
+            "email": "kdvjnj@nyu.edu"
+        },
+        {
+            "name": "Chad Sanchez-Moody",
+            "id": "IDX-010280",
+            "address": "Davisfort,Smith Roads,08464",
+            "grades": [
+                2.0,
+                5.0,
+                3.0
+            ],
+            "phone": "802-900-6830",
+            "email": "dmfkpb@yahoo.com"
+        },
+        {
+            "name": "Stephen Harding",
+            "id": "IDX-542603",
+            "address": "Christineborough,Isaac Fords,55410",
+            "grades": [
+                3.5,
+                4.0,
+                2.0
+            ],
+            "phone": "407-440-9901",
+            "email": "zyfemv@stanford.edu"
+        },
+        {
+            "name": "Samantha Ellis",
+            "id": "IDX-891549",
+            "address": "Brownside,Michael Brook,90113",
+            "grades": [
+                3.0,
+                3.5
+            ],
+            "phone": "(+1) 654-348-8676",
+            "email": "xbeymh@yahoo.com"
+        },
+        {
+            "name": "Colleen Allen",
+            "id": "IDX-139460",
+            "address": "New Jerry,Taylor Trace,23521",
+            "grades": [
+                5.0,
+                3.0,
+                4.0,
+                5.0
+            ],
+            "phone": "810-779-2092",
+            "email": "ymblyt@pojet.edu.pl"
+        },
+        {
+            "name": "Joshua Nelson-Nichols",
+            "id": "IDX-642560",
+            "address": "East Gerald,Moreno Wall,62053",
+            "grades": [
+                3.0,
+                5.0,
+                4.0
+            ],
+            "phone": "599-774-9110",
+            "email": "knuyki@mit.edu"
+        },
+        {
+            "name": "Joshua Haney",
+            "id": "IDX-416988",
+            "address": "North Christinebury,Buchanan Junctions,37156",
+            "grades": [
+                4.0,
+                3.5,
+                2.0,
+                3.5,
+                2.0
+            ],
+            "phone": "267-327-8255",
+            "email": "cqnamo@nyu.edu"
+        },
+        {
+            "name": "Edward Barker",
+            "id": "IDX-939671",
+            "address": "Johnsonhaven,Jimenez Road,84693",
+            "grades": [
+                4.0,
+                4.0,
+                5.0
+            ],
+            "phone": "(+1) 137-614-4098",
+            "email": "ysdczx@nyu.edu"
+        }
+    ]
+}

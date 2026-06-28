@@ -1,0 +1,70 @@
+1. Description of entities and their connections
+
+The database represents a Netflix-style video streaming platform where users can manage subscriptions, create viewing profiles, browse movies and series, and react to content.
+
+Plan & Account:
+The Plan entity stores the available subscription tiers, including name, price, and maximum allowed screens. The Account entity represents the main paying customer. It stores login credentials and the account creation date. One plan can be assigned to many accounts.
+
+DeviceType & Device:
+The DeviceType entity acts as a lookup table storing categories of hardware (for example, an iPad, a Smart TV, or a smartphone). The Device entity tracks where an account has logged in. It links the main Account to a specific DeviceType and records the timestamp of the last login. One DeviceType can be associated with many individual Device records, and one Account can be linked to many Devices.
+
+Profile & Avatar:
+The Profile entity represents individual viewers under a main account. It stores the profile name and maturity level. The Avatar entity acts as a lookup table for profile pictures. Many profiles can use the same avatar, and one account can have multiple profiles.
+
+Genre, Movie & Series:
+The Genre entity categorizes content. The Movie and Series entities store information about the video content, such as title, release year, and description/duration. Each movie and series belongs to one specific genre.
+
+Episode:
+The Episode entity stores individual episodes that belong to a Series. It tracks the season number, episode number, and duration.
+
+Actor, Movie_Actor & Series_Actor:
+The Actor entity stores the real names of performers. Movie_Actor and Series_Actor are associative (joining) entities. They resolve the many-to-many relationships between actors and the content they appear in, storing the specific character name the actor played.
+
+Movie_Reaction:
+The Movie_Reaction entity stores user feedback. It tracks which profile liked or disliked a specific movie (using a numerical value for the status) and records the timestamp of the interaction.
+
+
+
+2. Main relationships
+
+One Plan can belong to many Accounts.
+
+One Account can have many Profiles.
+
+One Account can log into many Devices.
+
+One DeviceType can be associated with many Devices.
+
+One Avatar can be used by many Profiles.
+
+One Genre can contain many Movies and many Series.
+
+One Series can contain many Episodes.
+
+One Movie can have many Movie_Reactions.
+
+One Profile can leave many Movie_Reactions.
+
+Actors and Movies are connected through the Movie_Actor entity (Many-to-Many).
+
+Actors and Series are connected through the Series_Actor entity (Many-to-Many).
+
+
+
+3. Sample functionalities of the database
+
+The system can show all devices of a specific type (e.g., 'Smart TV') used by a selected billing account.
+
+The system can display all movies grouped by a specific genre.
+
+The system can list all actors and their character names for a specific movie or series.
+
+The system can show all episodes belonging to season 1 of a specific series.
+
+The system can track and display all numerical "like" or "dislike" reactions left by a specific user profile.
+
+
+
+4. Purpose of the database
+
+The purpose of this database is to model the core structure of a Netflix-like streaming service. It supports subscription management, multi-profile user architecture, hardware tracking, content organization (movies, series, and episodes), cast tracking, and user interaction through reactions.

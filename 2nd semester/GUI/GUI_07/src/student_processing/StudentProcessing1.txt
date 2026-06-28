@@ -1,0 +1,5 @@
+Mary 12c 78
+Jane 12c 90
+Alice 13ITN 68
+Kate 12c 76
+Richard 13ITN 66
