@@ -1,0 +1,1 @@
+I measured start-up time of ExtThread and RunTask for N = 10000, 25000 and 50000, with a warm-up of 5000. I found the median for ExtThread and for Runnable. I didn't understand literally everything, but it was definitely useful tutorial for me.
