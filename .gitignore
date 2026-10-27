@@ -1,0 +1,15 @@
+# Java / IntelliJ build output
+out/
+bin/
+*.class
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
