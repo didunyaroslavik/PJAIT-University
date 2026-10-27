@@ -1,0 +1,100 @@
+UTP_04 - Thread Control and Concurrency Models
+Final Report: Observations and Conclusions
+==============================================
+
+1. How each class implements concurrency
+----------------------------------------
+ThreadBall (black)
+  Every ball gets its own platform (OS) thread, created and started in the
+  constructor. The thread runs an infinite loop: move, check walls, sleep.
+  When the ball hits a wall it waits on the shared static MONITOR object
+  (synchronized + wait()). "Shake" calls notifyAll() on MONITOR, which wakes
+  up every waiting ThreadBall at once.
+
+ScheduledBall (red)
+  The ball has no thread of its own. All scheduled balls share one
+  ScheduledExecutorService with a single thread. run() is one movement step,
+  and scheduleAtFixedRate() calls it every "speed" milliseconds. On a wall
+  hit the ball cancels its own ScheduledFuture, so the step is simply not
+  called anymore. wakeUp() checks isCancelled() and schedules the task again.
+  There is no blocking and no waiting thread - a stopped ball costs nothing.
+
+VThreadBall (blue)
+  Each ball runs on its own virtual thread from
+  Executors.newVirtualThreadPerTaskExecutor(). Pausing uses a ReentrantLock
+  with a Condition: on collision pause() sets paused = true, and on the next
+  loop iteration checkPaused() calls condition.await() while paused is true.
+  wakeUp() sets paused = false and calls signalAll() for this ball only.
+
+VsThreadBall (green)
+  Also a virtual thread per ball, but pausing uses a Semaphore with 1 permit.
+  Each iteration does acquire() + release(), which passes through freely when
+  the permit is available. On collision the ball acquires the permit and keeps
+  it, so the next acquire() blocks. wakeUp() calls release(), which gives the
+  permit back and lets the ball continue.
+
+2. Behaviour when switching between models
+------------------------------------------
+- Visually all four colours move the same way: they start in the middle,
+  fly to a wall, bounce and stop. After "Shake Balls" they all continue.
+- Because one click of "Add Ball" creates one ball of each type, it is easy to
+  compare them side by side. Movement looks equally smooth for all four.
+- All red balls share ONE scheduler thread - every step of every red ball
+  runs one after another on that thread. With a few balls this is not
+  visible, but with very many red balls they could start to lag.
+- A ball that hits a corner (two walls at once) needs two shakes for the
+  black, blue, green and red balls, because it stops once for the X wall and
+  once for the Y wall. I checked this in a test: balls that ended in a corner
+  stayed in place after one wakeUp() and moved again after the second.
+
+3. Responsiveness and resource usage
+------------------------------------
+- ThreadBall: one OS thread per ball (about 1 MB of stack reserved each).
+  With hundreds of balls this becomes heavy, and most of these threads are
+  only sleeping or waiting.
+- ScheduledBall: only one thread for all red balls, so it is the cheapest in
+  memory. The downside is that everything is serialized on that thread; if a
+  step were slow, all red balls would lag.
+- VThreadBall / VsThreadBall: virtual threads are very cheap (small heap-based
+  stacks managed by the JVM). Thread.sleep(), await() and acquire() unmount
+  the virtual thread from its carrier, so thousands of balls can wait without
+  holding OS threads. Responsiveness stays the same as with platform threads.
+
+4. Synchronization techniques
+-----------------------------
+- MONITOR (synchronized / wait / notifyAll): simple, built into the language,
+  but the monitor is shared by ALL ThreadBalls. It is impossible to wake one
+  ball only - notifyAll() always wakes everyone waiting on MONITOR.
+- Lock / Condition: each VThreadBall has its own lock and condition, so
+  wakeUp() affects exactly one ball. The "paused" flag plus a while loop around
+  await() protects against spurious wake-ups. More code, but much more control.
+- Semaphore: the shortest code - pause is "take the permit", resume is "give
+  it back". A limitation: release() always adds a permit, even if the ball is
+  not stopped. If "Shake" is pressed several times while a green ball is
+  moving, extra permits pile up and the ball will not stop at the next wall(s).
+- ScheduledFuture.cancel(): not a lock at all - control is done by removing
+  and re-adding the task, so there is nothing to synchronize on.
+
+5. Advantages and limitations
+-----------------------------
+Model             | Advantages                          | Limitations
+------------------|-------------------------------------|-----------------------------------
+Platform thread   | easiest to understand, classic API  | expensive per ball, shared MONITOR
+(ThreadBall)      |                                     | wakes all balls at once
+Scheduled executor| fixed number of threads, no         | one thread does all the work,
+(ScheduledBall)   | blocking, exact timing              | must re-schedule to resume
+Virtual + Lock    | cheap threads, per-ball control,    | most boilerplate (lock/unlock,
+(VThreadBall)     | safe pause/resume                   | try/finally, flag)
+Virtual + Semaph. | cheap threads, very short code      | permits can accumulate when
+(VsThreadBall)    |                                     | released too many times
+
+6. Conclusion
+-------------
+For this kind of program - many small, mostly sleeping tasks - virtual threads
+are the most efficient model: code stays written in the normal "one thread per
+ball" style, but the cost per ball is tiny. Of the two virtual-thread versions,
+VThreadBall with Lock/Condition is the most correct, because each ball can be
+paused and resumed independently and repeated wake-ups do not break anything.
+ScheduledBall is also very efficient in resources, but only while each step is
+short. ThreadBall works, but it uses the most resources and gives the least
+control.

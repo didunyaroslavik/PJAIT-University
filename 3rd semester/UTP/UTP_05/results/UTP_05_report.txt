@@ -1,0 +1,105 @@
+UTP_05 - A Reflection-Based Class Analyzer with a Swing Interface
+Final Report: Observations and Conclusions
+=================================================================
+
+1. How ReflectionCLI discovers class members, and how ObjectInspector shows them
+--------------------------------------------------------------------------------
+ReflectionCLI takes the path to a .class file, loads the class and calls
+analyzeClass(). analyzeClass() uses four reflection calls:
+  - getDeclaredFields()       -> FIELDS
+  - getDeclaredConstructors() -> CONSTRUCTORS
+  - getDeclaredMethods()      -> METHODS
+  - getInterfaces()           -> INTERFACES
+"Declared" means every member written in this class (also private ones), but
+nothing inherited from the superclass. Each element is turned into one row
+(Object[4]: type, modifiers, name, details) by createFieldRow,
+createConstructorRow, createMethodRow or createInterfaceRow.
+The generic method showReflectionElements(T[], String, Function<T, Object[]>)
+works for all four kinds, so the same printing code is reused with a
+different method reference each time.
+
+ObjectInspector uses exactly the same row-creating methods (it calls the
+static methods of ReflectionCLI), but addReflectionElements() adds the rows to
+a DefaultTableModel instead of printing them. So the "logic" layer and the UI
+layer share the code and differ only in where the rows go.
+
+Example output for a test class Person (implements Serializable, Comparable):
+  FIELDS
+  [Field, private, name, Type:String]
+  [Field, public static final, MAX, Type:int]
+  CONSTRUCTORS
+  [Constructor, private, Person, (String, int)]
+  METHODS
+  [Method, public, compareTo, int(Person)]
+  [Method, public volatile, compareTo, int(Object)]
+  INTERFACES
+  [Interface, , Comparable, java.lang.Comparable]
+
+2. Class loading with URLClassLoader
+------------------------------------
+- The URLClassLoader gets the folder of the .class file as its classpath root,
+  and the class name is taken from the file name without ".class".
+- This only works for classes in the default package. For a class in a
+  package (e.g. shop/Item.class) the loader expects the root folder ABOVE
+  "shop" and the fully-qualified name "shop.Item". With the simple name the
+  JVM throws:
+      NoClassDefFoundError: Item (wrong name: shop/Item)
+  I catch this error and show it as a message instead of crashing.
+- If the loaded class uses other classes, they must be in the same folder
+  (or on the program's classpath), otherwise loading also fails.
+- Because each analysis creates a new URLClassLoader, the same class can be
+  loaded again after recompiling it - a new loader means a new copy of the
+  class.
+
+3. UI layer
+-----------
+- Table model: one DefaultTableModel with four columns: Type, Modifiers,
+  Name, Details. All four kinds of members fit into these columns, so one
+  table is enough.
+- Immutability: the model is an anonymous subclass of DefaultTableModel with
+  isCellEditable() always returning false, so the user cannot edit the
+  results by accident (double-click does nothing).
+- Column sizing: preferred widths are 150/150/200/350 so the long "Details"
+  column gets the most space, and AUTO_RESIZE_ALL_COLUMNS keeps the table
+  filling the window when it is resized.
+- Sections: I add a header row ("--- FIELDS ---", "--- METHODS ---", ...)
+  before each section, the same way the CLI prints a section title. Empty
+  sections are skipped completely.
+- The status label at the bottom shows which class was analyzed, or the
+  error if loading failed. "Clear" empties the table with setRowCount(0).
+  Loading another class without clearing appends its rows below the old ones.
+
+4. Limitations and ideas for extensions
+---------------------------------------
+- Packages: classes in packages are not supported (see point 2). Fix: read
+  the package from the file path or try parent folders until loading works.
+- Nested / anonymous classes: files like Outer$Inner.class or Outer$1.class
+  only load if Outer.class is also in the folder; their output also does not
+  show the relation to the outer class.
+- Synthetic / bridge methods: the compiler adds a bridge method
+  compareTo(Object) for generic interfaces. Modifier.toString() shows it as
+  "public volatile", because the bridge flag uses the same bit as volatile
+  (which only makes sense for fields). It could be marked with
+  method.isBridge() or hidden.
+- Generics are lost: getSimpleName() gives "List", not "List<String>". Using
+  getGenericType() / getGenericParameterTypes() would show full types.
+- Not shown: annotations, superclass, inherited members, exceptions thrown by
+  methods, parameter names.
+- Only one class at a time - no scanning of a whole folder or JAR.
+- Ideas: separate tabs for Fields / Constructors / Methods / Interfaces (the
+  JTabbedPane is already there), an annotations tab, a filter by modifier
+  (e.g. only public), and a search field by member name using a
+  TableRowSorter.
+
+5. Conclusion
+-------------
+What worked well: reflection makes it very easy to list everything declared
+in a class, and the generic showReflectionElements / addReflectionElements
+method with Function<T, Object[]> removed almost all duplicated code - CLI and
+GUI share the same row builders.
+What was tricky: class loading - the classpath root and the class name must
+match the package exactly, and errors come as Error (NoClassDefFoundError),
+not only as exceptions. Also, raw modifier output can be misleading (bridge
+methods shown as "volatile").
+Improvements: support packages, show generics and annotations, split sections
+into tabs and add filtering and search.
