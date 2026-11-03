@@ -1,0 +1,68 @@
+UTP_06 - Annotations in Data Validation and JSON Serialization
+Report: Observations and Conclusions
+==============================================================
+
+1. Validation with annotations
+------------------------------
+I made 3 annotations in the validation package: @NotNull, @NotBlank and
+@Range(min, max). All of them have RUNTIME retention (so I can read them
+with reflection while the program runs) and target FIELD (they can only be
+put on fields).
+
+In the User class I just put them on the fields:
+  - id       -> @Range(min = 1)
+  - username -> @NotBlank
+  - email    -> @NotNull
+  - age      -> @Range(min = 18, max = 100)
+  - password -> nothing, it is not validated
+
+The Validator class goes through all fields with getDeclaredFields(), calls
+setAccessible(true) to read private fields, and checks which annotation the
+field has. If a rule is broken it throws ValidationException with a message.
+
+2. How reflection and annotations changed the class design
+----------------------------------------------------------
+The User class does not have any checking code inside - it only has fields,
+a constructor and getters. The rules are written as annotations next to the
+fields, so it is easy to see them. The Validator does not know anything about
+User, it works for any object. So if I make a new class (for example
+Product) I only need to add annotations, and the same Validator will work.
+
+One thing I noticed: @Range has int min/max, but id is a long. I solved it by
+converting the value to Number and then to long before comparing.
+
+3. JSON serialization
+---------------------
+JsonSerializer also uses reflection. It works only if the class has
+@JsonSerializable, otherwise it throws IllegalArgumentException.
+For every field:
+  - @JsonIgnore  -> the field is skipped (I used it for password, because a
+                    password should never be sent in JSON)
+  - @JsonProperty("userId") -> the key in JSON is "userId" instead of "id"
+  - other fields -> the key is the field name
+Strings are put in quotes, other values use String.valueOf(). All pairs are
+joined with StringJoiner(",") and wrapped in { }.
+
+4. The three cases in Main
+--------------------------
+Case 1 (valid user): validation passes and the result is
+  {"userId":1,"username":"JanKowalski","email":"jan.kowalski@example.com","age":30}
+  The password is not in the output and id is renamed to userId.
+
+Case 2 (blank username " "): @NotBlank catches it, because a space is only
+  whitespace. Result:
+  {"status":"error","message":"Field 'username' cannot be blank"}
+
+Case 3 (age 16): @Range catches it, because 16 is less than 18. Result:
+  {"status":"error","message":"Field 'age' must be between 18 and 100, but was 16"}
+
+In cases 2 and 3 the error is also printed to System.err (red in IntelliJ).
+
+5. Ideas for improvement
+------------------------
+- Collect all errors and show them together, now it stops at the first one.
+- Add more annotations, for example @Email or @Size(min, max) for strings.
+- Escape special characters (like " or \) in strings in JSON.
+- Support nested objects and lists in JSON.
+- Fields are read in the order of getDeclaredFields(), which Java does not
+  guarantee, so the JSON order could be different on another JVM.
