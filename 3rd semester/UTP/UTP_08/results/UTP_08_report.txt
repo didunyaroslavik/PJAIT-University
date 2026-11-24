@@ -1,0 +1,129 @@
+UTP_08 - Practical Unit Testing with JUnit (annotations, TDD)
+Report: Observations and Conclusions
+=============================================================
+
+Files:
+  src/unitTests/task05/Main.java            (given - BogoSort)
+  test/unitTests/task05/MainTest.java       Problem 1
+  src/unitTests/task04/Polynomial.java      Problem 2
+  test/unitTests/task04/PolynomialTest.java (given)
+
+The package names (task04, task05) are the same as in the given files.
+
+
+1. Problem 1 - JUnit 5 annotations (MainTest)
+---------------------------------------------
+simpleTest (@Test)
+  Checks that generateTestArray() always returns the same array. To run it
+  "multiple times" I call it 10 times in a for loop and compare every result
+  with assertArrayEquals. It is always the same, because generateTestArray()
+  uses new Random(1000) - a Random with a fixed seed always gives the same
+  sequence of numbers.
+
+simpleTestR (@RepeatedTest(10))
+  The same check, but JUnit repeats the whole test method 10 times. The
+  difference: in simpleTest the loop is one test (one OK / FAIL), with
+  @RepeatedTest every repetition is a separate result
+  ("repetition 1 of 10", ...), so I can see exactly which one failed.
+
+manualPerfTest
+  Measures bogoSort with System.nanoTime() before and after, prints the time
+  and checks that the array is sorted. I used nanoTime and not
+  currentTimeMillis, because nanoTime is meant for measuring time intervals.
+  The time is different every run, because bogoSort uses new Random()
+  without a seed. My 3 runs:
+     7.237 s,  1.189 s,  0.215 s
+  The array has 11 elements, so there are 11! = 39 916 800 permutations and
+  bogoSort just shuffles until it finds the sorted one - it is pure luck how
+  long it takes.
+
+autoPerfTest (@RepeatedTest(10) + @Tag("performance"))
+  Identical to simpleTestR, but with a tag. Tags let me run or skip a group
+  of tests, e.g. slow performance tests can be skipped in normal runs. I
+  checked it with the JUnit console launcher:
+     --include-tag performance  -> only autoPerfTest runs (10 tests)
+     --exclude-tag performance  -> autoPerfTest is skipped
+  In IntelliJ it can be done in Run Configuration -> Test kind: Tags.
+
+finalTest (@Timeout)
+  Runs bogoSort and fails if it takes more than 1 second:
+     @Timeout(value = 1, unit = TimeUnit.SECONDS,
+              threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+  Result in all 3 runs: FAIL - "finalTest() timed out after 1 second".
+  This is the expected result - the point of the test is to reject code
+  that is too slow, and BogoSort usually is. Sometimes, with luck, it can
+  pass (in run 3 manualPerfTest took only 0.2 s).
+
+  Why SEPARATE_THREAD: with the default mode (SAME_THREAD) JUnit only
+  interrupts the test thread after the time is up. bogoSort never checks if
+  it was interrupted, so it would continue until the array is sorted (maybe
+  7 seconds), and only then the test is marked as failed. With
+  SEPARATE_THREAD the test runs in another thread and JUnit stops waiting
+  exactly after 1 second.
+
+
+2. Problem 2 - Polynomial (implementation from tests)
+-----------------------------------------------------
+The coefficients are stored in an int[], index = power of x:
+  3x^2 + 5x + 2  ->  [2, 5, 3]
+
+add(other)
+  result length = max of both lengths, then add coefficients with the same
+  index. Polynomials of different degree are handled because the shorter one
+  just doesn't add anything to the higher powers. I don't remove zeros at
+  the end, because the test expects {5, 2, 0} (not {5, 2}).
+
+multiply(other)
+  Every term with every term: a_i * b_j goes to index i + j. Degree n times
+  degree m gives degree n + m, so the result has
+  length1 + length2 - 1 coefficients.
+  (2x + 1)(x + 2): [1,2] * [2,1] = [2, 5, 2]
+
+evaluate(x)
+  Horner's method: start from the highest coefficient,
+  result = result * x + a_i. Only n multiplications and no Math.pow.
+  2x^2 + 3 at x = 2: ((2)*2 + 0)*2 + 3 = 11
+
+derivative()
+  Power rule: (a_i x^i)' = i * a_i x^(i-1), so result[i-1] = i * a[i]
+  and the result is 1 shorter. For a constant (length 1) the result is [0].
+  2x^2 + 3: [3, 0, 2] -> [0, 4]
+
+The constructor and getCoefficients() use clone(), so nobody can change the
+polynomial from outside by changing the original array.
+
+Note: the given PolynomialTest had "import unitTests.task03.Matrix;" - that
+class is from UTP_07 and is not used in the test, so the file did not
+compile in this project. I removed this one line.
+
+
+3. Test results
+---------------
+  MainTest
+    simpleTest                 OK
+    simpleTestR                OK  (10/10 repetitions)
+    manualPerfTest             OK  (time printed: 7.237 s / 1.189 s / 0.215 s)
+    autoPerfTest               OK  (10/10 repetitions)
+    finalTest                  FAILED - timed out after 1 second (expected)
+  PolynomialTest
+    testAddition               OK
+    testMultiplication         OK
+    testEvaluate               OK
+    testDerivative             OK
+
+  27 tests found, 26 successful, 1 failed (finalTest - on purpose)
+  (27 = 1 + 10 + 1 + 10 + 1 from MainTest + 4 from PolynomialTest)
+
+
+4. Conclusions
+--------------
+- @RepeatedTest is better than a loop inside a test, because each run is
+  reported separately.
+- One time measurement of a random algorithm says almost nothing - my
+  results differ 30 times (0.2 s vs 7.2 s). To measure performance it should
+  be run many times and the average taken.
+- @Timeout protects the test suite from tests that never end, but for code
+  that ignores interrupts it needs SEPARATE_THREAD.
+- In Problem 2 the tests were written first and the code after (TDD). The
+  tests decided small details of the implementation, e.g. that add() keeps
+  the 0 at the end and the derivative is one element shorter.
