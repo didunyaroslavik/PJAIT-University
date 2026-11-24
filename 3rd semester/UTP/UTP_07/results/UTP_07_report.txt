@@ -1,0 +1,136 @@
+UTP_07 - Practical Unit Testing with JUnit
+Report: Observations and Conclusions
+==========================================
+
+Files:
+  src/unitTests/task01/SimpleNumericalOperations.java  (fixed)
+  src/unitTests/task02/Cplx.java                       (given)
+  src/unitTests/task03/Matrix.java                     (given)
+  test/unitTests/task01/SimpleNumericalOperationsTest.java
+  test/unitTests/task02/CplxTest.java
+  test/unitTests/task03/MatrixTest.java
+
+All tests use JUnit 5 (org.junit.jupiter). In IntelliJ the library is
+downloaded from Maven (it is set in UTP_07.iml), the test/ folder is marked
+as Test Sources Root.
+
+
+1. Task 1 - SimpleNumericalOperations
+-------------------------------------
+testAddition uses assertEquals for a few cases (positive + positive,
+positive + negative, zeros, negative + negative).
+
+testPosNeg uses assertAll to group all checks. It checks every state:
+  - positive number (5, Integer.MAX_VALUE) -> isPositive true, isNegative false
+  - negative number (-5, Integer.MIN_VALUE) -> isPositive false, isNegative true
+  - zero -> both false (0 is neither positive nor negative)
+
+First I ran the tests on the original class. Both tests failed:
+  testAddition: expected: <5> but was: <-1>          (add did a - b)
+  testPosNeg:   7 failures, for example
+                "5 should be positive ==> expected: <true> but was: <false>"
+The big advantage of assertAll: it does not stop at the first failed
+assertion, it runs all of them and shows all 7 problems at once. With
+normal asserts I would see only the first error, fix it, run again, and so
+on.
+
+Bugs found and fixed:
+  add        : a - b      ->  a + b
+  isPositive : value < 0  ->  value > 0   (it was checking for negative)
+  isNegative : value >= 0 ->  value < 0   (wrong sign + 0 is not negative)
+The zero case is important - the original isNegative returned true for 0,
+and only the test with 0 can find that.
+
+After the fix: 2/2 tests pass.
+
+
+2. Task 2 - Cplx
+----------------
+Tests: compareCplxArr (assertArrayEquals on getCplxArr()), testToString,
+testAddAss and testSubAss (assertEquals). In testAddAss / testSubAss I also
+check with assertSame that the method returns the same object (this),
+because that is the difference between addAss and add.
+
+assertEquals(new Cplx(3, 4), result) works because Cplx overrides equals().
+Without it, assertEquals would compare references and always fail.
+
+Step 1 - non-static field  private Cplx cplx = new Cplx(2, 3);
+  -> 4/4 tests pass.
+
+Step 2 - static field  private static Cplx cplx = new Cplx(2, 3);
+  -> 2/4 tests fail. JUnit ran them in this order:
+       testToString    OK
+       testAddAss      OK    (cplx is now 3 + 4i!)
+       compareCplxArr  FAIL  expected [2.0, 3.0] but was [3.0, 4.0]
+       testSubAss      FAIL  expected 1.0 + 2.0i but was 2.0 + 3.0i
+
+  Why: JUnit 5 makes a new object of the test class for every test method.
+  A normal (instance) field is created again with every new object, so every
+  test gets its own fresh Cplx(2, 3). A static field belongs to the class and
+  is initialized only once, so all tests share ONE Cplx object. addAss and
+  subAss change this object (they don't return a new one), so a test that
+  runs later sees the values changed by earlier tests. The tests stop being
+  independent and the result depends on the order of execution - which in
+  JUnit is not the order in the source file.
+
+Step 3 - setup() with @BeforeEach that does cplx = new Cplx(2, 3)
+  -> YES, it solves the problem, 4/4 tests pass again. @BeforeEach runs
+  before every test, so each test starts with a new (2, 3) object, even
+  though the field is still static.
+
+The explanation is also written as a comment in CplxTest.java.
+
+
+3. Task 3 - Matrix
+------------------
+MatrixTest:
+  testIsSquare                       2x2 -> true, 2x3 -> false
+  testTranspose                      2x3 [[1,2,3],[4,5,6]] -> 3x2 [[1,4],[2,5],[3,6]]
+  testAdditionDimensionMismatch      2x2 + 2x3 -> IllegalArgumentException
+  testMultiplicationDimensionMismatch 2x3 * 2x3 -> IllegalArgumentException
+  testAddition                       [[1,2],[3,4]] + [[5,6],[7,8]] = [[6,8],[10,12]]
+  testMultiplication                 2x3 * 3x2 = [[58,64],[139,154]]
+
+For exceptions I used assertThrows - it returns the exception, so I also
+checked the message. For 2D arrays assertArrayEquals works, because it
+compares nested arrays element by element (assertEquals would only compare
+references of the arrays).
+
+For multiplication I used non-square matrices (2x3 * 3x2) on purpose - with
+square matrices a bug like mixing up rows and columns could be hidden.
+
+No bugs were found in Matrix.
+
+
+4. Test results
+---------------
+  SimpleNumericalOperationsTest
+    testAddition                          OK
+    testPosNeg                            OK
+  CplxTest
+    compareCplxArr                        OK
+    testToString                          OK
+    testAddAss                            OK
+    testSubAss                            OK
+  MatrixTest
+    testIsSquare                          OK
+    testTranspose                         OK
+    testAdditionDimensionMismatch         OK
+    testMultiplicationDimensionMismatch   OK
+    testAddition                          OK
+    testMultiplication                    OK
+
+  12 tests found, 12 tests successful, 0 tests failed
+
+
+5. Conclusions
+--------------
+- Unit tests found 3 bugs in a class that looked simple.
+- Edge cases (0, MAX_VALUE, MIN_VALUE, wrong dimensions) are where most
+  bugs hide, so they should always be tested.
+- Tests must be independent. Shared state (static fields, objects that
+  are modified) breaks this, and @BeforeEach is the standard way to reset
+  the state before every test.
+- Matrix.add only checks data[0].length, so a "jagged" array (rows with
+  different lengths) is not detected - it would throw
+  ArrayIndexOutOfBoundsException instead of a clear message.
