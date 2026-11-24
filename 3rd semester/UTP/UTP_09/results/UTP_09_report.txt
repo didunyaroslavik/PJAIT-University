@@ -1,0 +1,209 @@
+UTP_09 - Encoding and Persistent Storage of Graphical Data in Java
+Report: Observations and Conclusions
+==================================================================
+
+Files:
+  src/PositionAndColor.java      - Part 1: encoding x, y and color in one int
+  test/PositionAndColorTest.java - Part 1: JUnit 5 tests (given)
+  src/MyFrameIO.java             - Part 2, step 3: save/load with java.io
+  src/MyFrame.java               - Part 2, step 4: save/load with java.nio
+
+How to run: run MyFrameIO or MyFrame, click on the window to add circles,
+press Save, close and start again (or add more circles), press Load.
+
+
+######################  PART 1 - PositionAndColor  ######################
+
+1. Layout of the encoded int
+----------------------------
+One pixel (x, y and color) is stored in a single 32-bit int:
+
+   bits 31..24     bits 23..12     bits 11..0
+  +-----------+---------------+---------------+
+  |  color    |       y       |       x       |
+  |  8 bits   |    12 bits    |    12 bits    |
+  +-----------+---------------+---------------+
+
+12 bits give values 0..4095, so the coordinates can be up to 4095.
+Bigger values are cut with the mask 0xFFF (only the lowest 12 bits stay),
+e.g. 99999 & 0xFFF = 1695. This is what testXMasking and testYMasking check.
+
+2. encode / decode
+------------------
+encode:
+  result  = x & 0xFFF
+  result |= (y & 0xFFF) << 12
+  result |= (colorToByte(color) & 0xFF) << 24
+Because every part is masked before shifting, the parts never overlap and
+OR just puts them next to each other.
+
+decode does the opposite - shift right and mask:
+  x         = value & 0xFFF
+  y         = (value >> 12) & 0xFFF
+  colorByte = (value >> 24) & 0xFF
+and returns {x, y, colorByte}.
+
+One thing I noticed: when the color byte has the highest bit set (for example
+white = 255), the int becomes negative. With >> the sign bit is copied when
+shifting, so (value >> 24) would give -1 for white. The mask & 0xFF removes
+those extra bits, so the result is still 255. Without the mask the test
+testEncodeDecodeMax would fail. (Using >>> would also work.)
+
+3. colorToByte - compressing the color (RGB 3-3-2)
+--------------------------------------------------
+Normal color has 24 bits (8 per channel), but there is only one byte left,
+so each channel loses precision:
+  r = red   >> 5   -> 3 bits (0..7)
+  g = green >> 5   -> 3 bits (0..7)
+  b = blue  >> 6   -> 2 bits (0..3)
+  byte = (r << 5) | (g << 2) | b      -> RRRGGGBB
+
+Blue gets only 2 bits, because the human eye is the least sensitive to blue.
+Example: Color(128, 200, 50) -> r = 4, g = 6, b = 0 -> 100 110 00 = 152.
+
+4. byteToColor - getting the color back
+---------------------------------------
+  r = (value >> 5) & 0b111
+  g = (value >> 2) & 0b111
+  b =  value       & 0b11
+Then each part is scaled back to 0..255:
+  red = r * 255 / 7,  green = g * 255 / 7,  blue = b * 255 / 3
+Thanks to this, 0 gives 0 and the maximum (7 or 3) gives exactly 255, so
+black and white come back exactly (testByteToColorExactCases).
+
+It is important to multiply first and then divide. r / 7 * 255 would give 0
+for every r < 7, because of integer division.
+
+The compression is lossy - the original color can not be fully recovered.
+Red and green have 8 levels, so the error is at most about 255/7 = 36.
+Blue has only 4 levels, so the error can be up to 255/3 = 85. These are
+exactly the tolerances used in testColorRoundtrip.
+Example: Color(128, 200, 50) -> 152 -> Color(145, 218, 0).
+
+5. Test results
+---------------
+All 10 tests from PositionAndColorTest pass:
+  testColorToByteBasic            OK
+  testColorRoundtripKnownColors   OK
+  testByteToColorExactCases       OK
+  testEncodeDecodeZero            OK
+  testEncodeDecodeMax             OK
+  testEncodeDecodeMixedValues     OK
+  testEncodeDecodeRandomValues    OK   (1000 random x, y, colors)
+  testXMasking                    OK
+  testYMasking                    OK
+  testColorMasking                OK
+
+  10 tests found, 10 tests successful, 0 tests failed
+
+6. Conclusions (Part 1)
+-----------------------
+- One int (4 bytes) stores a whole pixel. Storing x, y, r, g, b as five
+  separate ints would take 20 bytes, so this is 5 times smaller, which is
+  useful for saving graphical data to a file.
+- Coordinates are stored without loss (as long as they fit in 0..4095),
+  only the color is lossy.
+- The limits: images bigger than 4096x4096 can not be stored, and there
+  are only 256 colors, so smooth gradients will show visible steps.
+
+
+#####################  PART 2 - saving circles to a file  #####################
+
+7. How MyFrame uses PositionAndColor
+------------------------------------
+MyFrame keeps all circles in an int[] circles (1000 elements) and the
+counter circlesCount. A circle is not an object - it is just one int from
+PositionAndColor.encode(x, y, color):
+  - mouseClicked: encode(e.getX(), e.getY(), random color) is put into
+    circles[circlesCount++] and the panel is repainted,
+  - paint: for every element decode() gives {x, y, colorByte},
+    byteToColor(colorByte) gives the color and fillOval draws the circle.
+Because every circle is one int, saving the whole picture means only
+saving a list of ints - this is what Part 2 is about.
+
+I noticed that paint goes through the whole array (circles.length), not
+only circlesCount, so the empty elements (value 0) are also drawn - they
+decode to x = 0, y = 0, black, which is a small black circle in the top
+left corner, mostly hidden outside the panel.
+
+8. Step 3 - java.io (MyFrameIO.java, file circles_io.bin)
+---------------------------------------------------------
+saveInt writes the int as 4 bytes, starting from the lowest one:
+  os.write(value); os.write(value >> 8); os.write(value >> 16); os.write(value >> 24);
+OutputStream.write(int) writes only the lowest 8 bits of the argument, so
+I don't have to mask with 0xFF - the rest of the bits are just ignored.
+
+loadInt reads the 4 bytes and puts them back in the same order:
+  value = is.read(); value |= is.read() << 8; ... value |= is.read() << 24;
+read() returns 0..255 (never a negative byte), so OR works without masks.
+
+Save: try-with-resources with FileOutputStream, first saveInt(circlesCount),
+then saveInt for every element of circles (for-each loop).
+Load: try-with-resources with FileInputStream, circlesCount = loadInt(fis),
+then a loop from 0 to circlesCount-1 that reads circles[i].
+Both catch FileNotFoundException first and then IOException (the order
+matters - FileNotFoundException is a subclass of IOException, so in the
+other order the code does not compile). For example pressing Load before
+any Save prints "File not found" to System.err and nothing crashes.
+
+try-with-resources closes the stream automatically, also when an
+exception is thrown, so I don't need a finally block.
+
+9. Step 4 - java.nio (MyFrame.java, file circles_nio.bin)
+---------------------------------------------------------
+Save:
+  - FileChannel.open(path, CREATE, WRITE, TRUNCATE_EXISTING)
+    CREATE - make the file if it does not exist, WRITE - open for writing,
+    TRUNCATE_EXISTING - clear the old content first (without it, saving
+    fewer circles than before would leave old bytes at the end of the file)
+  - ByteBuffer.allocate(Integer.BYTES * (1 + circles.length))
+  - putInt(circlesCount), then putInt for every circle
+  - flip() and channel.write(buffer)
+Load:
+  - FileChannel.open(path, READ), buffer of size channel.size()
+  - channel.read(buffer), flip()
+  - circlesCount = getInt(), circles = new int[circlesCount],
+    then getInt() for every index.
+
+flip() is needed because after putInt / read the buffer position is at
+the end of the data. flip() sets limit = position and position = 0, so
+write() / getInt() start from the beginning. Without flip() write() would
+write nothing (or garbage after the data).
+
+A problem I found: after Load the array has exactly circlesCount elements,
+so the next mouse click would throw ArrayIndexOutOfBoundsException. I added
+a check in mouseClicked - if the array is full it is made 2x bigger with
+Arrays.copyOf. This also removes the old limit of 1000 circles.
+
+10. java.io vs java.nio - the files are different!
+--------------------------------------------------
+I saved the same 5 circles with both versions and looked at the files in
+a hex viewer. Both are 4004 bytes (4 bytes count + 1000 * 4 bytes), but
+the beginning is different:
+  circles_io.bin : 05 00 00 00 ...   (little-endian - lowest byte first)
+  circles_nio.bin: 00 00 00 05 ...   (big-endian - highest byte first)
+saveInt writes from the least significant byte, but ByteBuffer is
+big-endian by default. So a file saved by one version can not be loaded
+by the other one - the count would be read as 83886080 instead of 5.
+That is why I used two different file names. To make them compatible it
+would be enough to call buffer.order(ByteOrder.LITTLE_ENDIAN) in the nio
+version.
+
+11. Test results (Part 2)
+-------------------------
+Both programs start, circles appear after clicking. For both versions:
+added 5 circles -> Save -> cleared the array -> Load -> the same 5 values
+came back (same x, y and color) and the circles were drawn again.
+Clicking after Load also works.
+
+12. Conclusions (Part 2)
+------------------------
+- Thanks to the encoding from Part 1 a circle is just 4 bytes, so the file
+  format is very simple: count + list of ints.
+- java.io works byte by byte - I had to split the int into bytes myself.
+  java.nio does it for me (putInt / getInt) and reads the whole file in one
+  call, so the code is shorter and faster for big files.
+- The file always stores all 1000 elements, even if there are only 5
+  circles. It would be better to save only circlesCount elements.
+- Byte order must be the same when saving and loading - it is part of the
+  file format.
